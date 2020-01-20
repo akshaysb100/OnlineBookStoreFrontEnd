@@ -21,21 +21,18 @@ export default class FetchBooksData extends React.Component {
 
       return (
           (i+1) % 5 === 0 ? <br /> :
-              <div className='cardSize' >
+              <div className="div">
                 <div className='card' >
-                  <div >
-                    <img className="title" src={item.image} alt={"bookImg"}  height="100px" width="100px"></img>
+                  <div className='imageSpace' >
+                    <img className='bookImg' src={item.image} alt={"bookImg"} ></img>
                   </div>
-                  <div >
-                  <div className='smallText'>  {item.title}</div>
-                    <div className=''>  {item.author}</div>
-                    <div>Rs.{item.price}</div>
-                  </div>
-                  <div >
-                  <button className='demo'>BUY NOW</button>
-                </div>
+                  <div className='bookName'>{item.title}</div>
+                  <div className='authorName'>{item.author}</div>
+                  <div className='bookName'>Rs.{item.price}</div>
+                  <button className='buttonBuyNow' onClick={this.onSubmit}  >ADD TO BAG</button>
                 </div>
               </div>
+
       )
     })
     return (
