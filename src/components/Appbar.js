@@ -5,6 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import './temp.css'
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,12 +23,12 @@ export default function DenseAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar variant="dense" >
-          <IconButton edge="start" className={classes.menuButton} color="red" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+      
+        <Toolbar variant="dense" className='toolbar'>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp;  <MenuBookIcon/>
           <Typography variant="h6" color="inherit">
-            Books
+               &nbsp; Bookstore
           </Typography>
         </Toolbar>
       </AppBar>

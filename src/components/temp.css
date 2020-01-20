@@ -1,3 +1,55 @@
 .title{
-    height:100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height:100px;
+  width: 100px;
+    
+}
+
+.toolbar{
+    background-color:rgb(151, 5, 5);
+}
+
+.textfile{
+   text-size-adjust: 1px;
+}
+.card {
+    height: 16em;
+    width: 78%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 0px solid lightgray;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+.cardSize{
+    margin-left: 11%;
+    display:inline-block;
+    padding: inherit;
+    width:20%;
+    max-height: 10%;
+    margin:10px;
+}
+
+.largeText{
+    font-size: smaller;
+}
+.smallText{
+    font-size: smaller;
+}
+
+.buttonStyle{
+    margin-bottom: 2%;
+}
+
+.margin{
+    margin-left: 11%;
+}
+
+.demo{
+    position: static;
+    bottom: 50px;
 }
