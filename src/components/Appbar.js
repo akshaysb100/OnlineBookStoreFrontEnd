@@ -2,11 +2,13 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 import './temp.css'
-import InputBase from '@material-ui/core/InputBase';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';import InputBase from '@material-ui/core/InputBase';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import FetchBooksData from "./FetchBooksData";
 
 
 const useStyles = makeStyles(theme => ({
@@ -38,35 +40,42 @@ const useStyles = makeStyles(theme => ({
 export default function DenseAppBar() {
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed">
-        <Toolbar variant="dense" className='toolbar'>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp;  <MenuBookIcon/>
+    return (
+        <div className={classes.root}>
+          <AppBar position="fixed">
+            <Toolbar variant="dense" className='toolbar'>
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp;  <MenuBookIcon/>
 
-          <Typography variant="h6" color="inherit">
-               &nbsp; Bookstore
-          </Typography>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp; &nbsp;
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;
-            <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+              <Typography className='bookStoreLogo' variant="h6" color="inherit">
+                &nbsp; Bookstore
+              </Typography>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon/>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{'aria-label': 'search'}}
+                />
+              </div>
+              <IconButton
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  color="inherit">
+
+                <AddShoppingCartIcon className='iconButton'/>
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <br/>
+        </div>
+    );
 }

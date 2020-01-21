@@ -1,4 +1,5 @@
 import React from "react";
+import ShoppingCart from "./ShoppingCart";
 
 export default class FetchBooksData extends React.Component {
   state = {
@@ -29,14 +30,17 @@ export default class FetchBooksData extends React.Component {
                   <div className='bookName'>{item.title}</div>
                   <div className='authorName'>{item.author}</div>
                   <div className='bookName'>Rs.{item.price}</div>
-                  <button className='buttonBuyNow' onClick={this.onSubmit}  >ADD TO BAG</button>
+                  <button className='buttonBuyNow' onClick={this.goToCart(item)}  >ADD TO BAG</button>
                 </div>
               </div>
 
       )
     })
     return (
-        <div >
+        <div ><br/>
+          <div className='books' >Books
+           <div className='itemsShow' >(52 items)</div>
+            </div>
             <div className='margin'>
               <div>
                 {Books}
@@ -46,4 +50,7 @@ export default class FetchBooksData extends React.Component {
 
     )
   }
+    goToCart(selectedBook) {
+        return <ShoppingCart book={selectedBook}/>
+    }
 }
