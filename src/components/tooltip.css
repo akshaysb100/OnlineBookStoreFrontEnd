@@ -5,9 +5,10 @@
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 350px;
+    width: 20em;
+    color: #9b9898;
     background-color: white;
-    color: black;
+    font-size: 80%;
     /*
     text-align: center;
     */
@@ -21,6 +22,6 @@
 .tooltip:hover .tooltiptext {
     margin-left: 100%;
     padding: 5%;
-    font-size: medium;
+    font-size:smaller;
     visibility: visible;
 }

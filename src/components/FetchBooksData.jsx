@@ -35,7 +35,7 @@ class FetchBooksData extends React.Component {
                     <div className="div">
                         <div className='card'>
                             <div className="tooltip">
-                                <span className="tooltiptext">{item.description}</span>
+                                <span className="tooltiptext"><h5 style={{color:"black"}}>Book Detail</h5>{item.description}</span>
                                 <div className='imageSpace'>
                                     <img className='bookImg' src={item.image} alt={"bookImg"}></img>
                                 </div>
