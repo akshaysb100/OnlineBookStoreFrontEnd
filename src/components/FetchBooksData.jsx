@@ -1,7 +1,7 @@
 import React from "react";
-import ShoppingCart from "./ShoppingCart";
 import {withRouter} from 'react-router-dom';
 import './tooltip.css'
+import './fetchBookdata.css'
 
 class FetchBooksData extends React.Component {
     constructor(props) {
@@ -9,13 +9,17 @@ class FetchBooksData extends React.Component {
     }
 
     state = {
+        clicks: 0,
         loading: true,
-        person: []
+        person: [],
+        listShoppingCart:[]
     };
 
     goToCart = (event) => {
-        this.props.history.push('summery');
+        this.state.listShoppingCart.push(event)
+        localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart))
     }
+
 
     async componentDidMount() {
         const url = "http://localhost:8080/books/showBooks";
@@ -35,18 +39,18 @@ class FetchBooksData extends React.Component {
                     <div className="div">
                         <div className='card'>
                             <div className="tooltip">
-                                <span className="tooltiptext"><h5 style={{color:"black"}}>Book Detail</h5>{item.description}</span>
+                                <span className="tooltiptext"><h5
+                                    style={{color: "black"}}>Book Detail</h5>{item.description}</span>
                                 <div className='imageSpace'>
                                     <img className='bookImg' src={item.image} alt={"bookImg"}></img>
                                 </div>
                                 <div className='bookName'>{item.title}</div>
                                 <div className='authorName'>{item.author}</div>
                                 <div className='bookName'>Rs.{item.price}</div>
-                                <button className='buttonBuyNow' onClick={this.goToCart}>ADD TO BAG</button>
+                                <button className='buttonBuyNow' onClick={() => this.goToCart(item)}>ADD TO BAG</button>
                             </div>
                         </div>
                     </div>
-
             )
         })
         return (
@@ -62,10 +66,6 @@ class FetchBooksData extends React.Component {
             </div>
 
         )
-    }
-
-    goToCart(selectedBook) {
-        return <ShoppingCart book={selectedBook}/>
     }
 }
 

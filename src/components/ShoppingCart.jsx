@@ -1,37 +1,34 @@
-import React from 'react'
+import React, {Component} from 'react';
+import './tooltip.css'
 
-export default class ShoppingCart extends React.Component {
-    state = {
-        book:{}
-    };
-
+class ShoppingCart extends Component {
     constructor(props) {
         super(props);
-        this.state = this.props.book;
+        this.state = {
+            clicks: 0,
+            loading: true,
+            person: [],
+            listShoppingCart: []
+        };
     }
 
     render() {
-        console.log("received data from dashboard", this.props);
-        var Book =
-                    <div className="div">
-                        <div className='card'>
-                            <div className='imageSpace'>
-                                <img className='bookImg' src={this.props.book.image} alt={"bookImg"}></img>
-                            </div>
-                            <div className='bookName'>{this.props.book.title}</div>
-                            <div className='authorName'>{this.props.book.author}</div>
-                            <div className='bookName'>Rs.{this.props.book.price}</div>
-                        </div>
-                    </div>
-
         return (
-            <div>
-                <div className='margin'>
-                    <div>
-                        {Book}
+            <div className="div">
+                <div className='card'>
+                    <div className="tooltip">
+                        <div className='imageSpace'>
+                            <img className='bookImg' src={JSON.parse(localStorage.getItem("abc"))[0].image}
+                                 alt={"bookImg"}></img>
+                        </div>
+                        <div className='bookName'>{}</div>
+                        <div className='authorName'>{}</div>
+                        <div className='bookName'>Rs.{}</div>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
+
+export default ShoppingCart;

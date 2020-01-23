@@ -1,0 +1,59 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+    border-radius: 4px;
+    background-color: white;
+    width: 30em;
+}
+
+.toolBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #A03037;
+}
+
+.searchIcon {
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.inputInput {
+    width: 100%;
+}
+
+.toolBar {
+    background-color: #A03037;
+}
+
+.toolBarDiv {
+    width: 150%;
+    justify-content: space-evenly;
+    min-height: 67px;
+    display: flex;
+    align-items: center
+}
+
+.bookstore {
+    width: fit-content;
+    font-size: 1.4vw;
+}
+
+.searchInput{
+    margin-left: 6%;
+}
+
+.bookIcon{
+    margin-left: 2em;
+}
+/*
+
+.iconButton{
+    margin-left: 18em;
+}*/
