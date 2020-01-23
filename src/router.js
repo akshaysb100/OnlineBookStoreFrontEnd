@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 import React from "react";
 import history from './history';
-import ShoppingCart from "./components/ShoppingCart";
 import FetchBooksData from "./components/FetchBooksData";
 import MyToolBar from "./components/MyToolBar";
 import CustomerDetails from "./components/CustomerDetails";
+import PlaceOrder from "./components/PlaceOrder";
 
 export default function Routing() {
     return (
@@ -19,7 +19,7 @@ export default function Routing() {
                 <FetchBooksData />
             </Route>
             <Route path="/summery">
-                <ShoppingCart />
+                <PlaceOrder />
             </Route>
             <Route path="/customerDetails">
                 <CustomerDetails />

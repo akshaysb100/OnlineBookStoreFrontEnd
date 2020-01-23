@@ -1,0 +1,15 @@
+div.scroll {
+    marginTop:2em;
+    margin: 2em 10em;
+    padding: 0em;
+    width: 41em;
+    height: 20em;
+    overflow-x: hidden;
+    text-align: justify;
+}
+
+.placedOrderButton{
+    margin-left: 43em;
+    height: 2em;
+    backgroundColor: "#0588f9"
+}

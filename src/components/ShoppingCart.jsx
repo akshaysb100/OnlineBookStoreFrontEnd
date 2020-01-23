@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './tooltip.css'
+import './shippingcart.css'
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -8,26 +8,50 @@ class ShoppingCart extends Component {
             clicks: 0,
             loading: true,
             person: [],
-            listShoppingCart: []
         };
     }
 
+    async componentDidMount() {
+        let data = JSON.parse(localStorage.getItem("abc"));
+        await this.setState({loading: false});
+        await this.setState({person: data});
+    }
+
+
     render() {
-        return (
-            <div className="div">
-                <div className='card'>
-                    <div className="tooltip">
-                        <div className='imageSpace'>
-                            <img className='bookImg' src={JSON.parse(localStorage.getItem("abc"))[0].image}
-                                 alt={"bookImg"}></img>
+        var Books = this.state.person.map((item, i) => {
+            console.log("keys" + JSON.stringify(item));
+            return (
+                <div className="shippingdiv">
+                    <div className='shippingcard'>
+                        <div className='shippingimageSpace'>
+                            <img className='shippingbookImg' src={item.image}></img>
+                            <div>
+                                <div
+                                    className='shippingbookName'>{item.title}</div>
+                                <div
+                                    className='shippingauthorName'>{item.author}</div>
+                                <div
+                                    className='shippingbookName'>Rs.{item.price}</div>
+                            </div>
                         </div>
-                        <div className='bookName'>{}</div>
-                        <div className='authorName'>{}</div>
-                        <div className='bookName'>Rs.{}</div>
+                    </div>
+                </div>
+            )
+        })
+
+        return (
+            <div><br/><br/>
+                <div className='shippingbooks'>
+                </div>
+                <div className='shippingmargin'>
+                    <div>
+                        {Books}
                     </div>
                 </div>
             </div>
-        );
+
+        )
     }
 }
 

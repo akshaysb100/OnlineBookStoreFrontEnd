@@ -1,6 +1,6 @@
 
 .margin {
-    margin-left: 8%;
+    margin-left: 4em;
 }
 
 .main {
@@ -46,8 +46,8 @@
     height: 60%;
     background-color: white;
     margin: 2%;
-    padding: 3px;
-    border-radius: 2px;
+    padding: 0%;
+    border-radius: 0%;
 }
 
 .subMain {
@@ -72,7 +72,7 @@
 
 .bookImg {
     width: 47%;
-    height: 150px;
+    height: 9em;
     padding: 22px;
     display: flex;
     justify-content: center;
@@ -80,29 +80,29 @@
 }
 
 .bookName {
-    font-size: 1vw;
-    padding-left: 15px;
+    font-size: 75%;
+    padding-left: 15%;
     color: black;
     font-weight: 500;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 3%;
+    padding-bottom: 2%;
 }
 
 .authorName {
-    font-size: 10px;
-    padding-left: 15px;
+    font-size: 10%;
+    padding-left: 15%;
     color: #9b9898;
 }
 
 .buttonBuyNow {
     width: 58%;
     font-size: 100%;
-    border-radius: 2px;
+    border-radius: 2%;
     background-color: #a03037;
     color: white;
     text-align: center;
-    padding-top: 5px;
-    padding-bottom: 3px;
+    padding-top: 4%;
+    padding-bottom: 1%;
     margin-left: 20%;
     margin-top: 0%;
     margin-bottom: 7%;
@@ -112,12 +112,12 @@
 .div {
     display: inline-block;
     width: 20%;
-    margin: 20px;
+    margin: 2%;
 }
 
 .card {
     width: 100%;
-    height: 286px;
+    height: 250%;
     display: flex;
     flex-direction: column;
     border: 0px solid lightgray;
@@ -133,12 +133,13 @@
 }
 
 .books {
-    padding-left: 10%;
+    font-size: 1em;
+    padding-left: 7%;
 }
 
 .itemsShow {
-    font-size: 10px;
-    margin-left: 0%;
+    font-size: 65%;
+    margin-left:0%;
     color: #9b9898;
 }
 

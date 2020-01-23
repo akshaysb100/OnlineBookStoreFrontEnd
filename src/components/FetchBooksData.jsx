@@ -16,19 +16,23 @@ class FetchBooksData extends React.Component {
     };
 
     goToCart = (event) => {
-        document.activeElement.style.backgroundColor="blue";
-        document.activeElement.innerHTML="ADDED TO CART"
+        document.activeElement.style.backgroundColor = "#0588f9";
+        document.activeElement.innerHTML="ADDED TO BAG"
         this.state.listShoppingCart.push(event)
         localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart))
+
     }
 
 
     async componentDidMount() {
-        const url = "http://localhost:8080/books/showBooks";
+        const url = "http://192.168.0.167:8080/books/showBooks";
         const response = await fetch(url);
         const data = await response.json();
         let keys = Object.keys(data)
+        console.log(data)
         this.setState({person: data, loading: false});
+        console.log(this.state.person)
+
     }
 
     render() {
@@ -49,7 +53,7 @@ class FetchBooksData extends React.Component {
                                 <div className='bookName'>{item.title}</div>
                                 <div className='authorName'>{item.author}</div>
                                 <div className='bookName'>Rs.{item.price}</div>
-                                <button className='buttonBuyNow' onClick={() => this.goToCart(item)} id="addToCartButton" >ADD TO BAG</button>
+                                <button className='buttonBuyNow' onClick={() => this.goToCart(item)} id="addToBag">ADD TO BAG</button>
                             </div>
                         </div>
                     </div>
