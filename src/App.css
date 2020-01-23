@@ -23,3 +23,89 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.boxwala{
+  margin-left: 5%;
+  margin-right: 30em;
+  height: fit-content
+}
+
+.detailsBox{
+  margin-left: 13%;
+  margin-top: 7%;
+}
+.checkout{
+  margin-left: 75%;
+  margin-bottom: 2em;
+}
+.buttonCheckout{
+
+}
+.userAddress.MuiFormControl-root{
+  width: 250px;
+  margin: 8px;
+  margin-left: 1em;
+}
+.user {
+  width: 9%;
+}
+.makeStyles-root-1{
+  margin-top: 15px;
+}
+.MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl{
+  width: 300%;
+}
+.MuiBox-root-130{
+  color: black;
+}
+.SummaryBox{
+  width: 42em;
+
+  margin-right: 20%;
+}
+.BootomBar{
+  margin-top: 10%;
+}
+input[type="radio"] {
+  margin-right: 0;
+}
+.RadioButton1{
+  color: grey;
+  margin-left: 1em;
+  margin-top: 1;
+}
+.RadioButton2{
+  color: grey;
+  margin-left: 26%;
+  margin-top: -1.2em;
+}
+.RadioButton3{
+  color: grey;
+  margin-left: 50%;
+  margin-top: -1.2em;
+}
+.NameAndEmail{
+  color: black;
+}
+.addressBlock{
+  margin-left: 1em;
+}
+
+.block{
+  width: 27em;
+
+}
+
+.customerTitle{
+  padding-left: 1em;
+}
+
+.paper{
+  width: 40em;
+}
+
+.type{
+  font-size: large;
+  margin-left: 4%;
+}
+

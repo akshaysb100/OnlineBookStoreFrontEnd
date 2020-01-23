@@ -132,3 +132,31 @@
 .bookStoreLogo{
     padding-left: 1%;
 }
+
+.detailsBox{
+    padding-left: 6em;
+    width: 16em;
+    height: 4em;
+}
+
+.longDetailsBox {
+    width: 36em;
+    height: 4em;
+}
+
+.nameBox {
+    padding-left: 3em;
+    margin-bottom: 2em;
+}
+
+/*
+
+.DivBox {
+    display: flex;
+    flex-wrap: inherit;
+    justify-content: flex-start;
+    max-width: 200em;
+    margin: 4em;
+    background: #A0C5E8;
+    padding: 2em 0;
+}*/
