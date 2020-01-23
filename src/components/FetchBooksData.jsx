@@ -16,8 +16,10 @@ class FetchBooksData extends React.Component {
     };
 
     goToCart = (event) => {
+        document.activeElement.style.backgroundColor = "#0588f9";
         this.state.listShoppingCart.push(event)
         localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart))
+
     }
 
 

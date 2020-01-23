@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './tooltip.css'
+import './shippingcart.css'
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -8,22 +8,29 @@ class ShoppingCart extends Component {
             clicks: 0,
             loading: true,
             person: [],
-            listShoppingCart: []
         };
     }
 
-    render() {
+     componentDidMount() {
+         let data = JSON.parse(localStorage.getItem("abc"));
+         this.setState({person: data});
+         console.log(this.state.person)
+     }
+
+
+        render() {
         return (
-            <div className="div">
-                <div className='card'>
-                    <div className="tooltip">
-                        <div className='imageSpace'>
-                            <img className='bookImg' src={JSON.parse(localStorage.getItem("abc"))[0].image}
-                                 alt={"bookImg"}></img>
+            <div className="shippingdiv">
+                <div className='shippingcard'>
+                    <div className='shippingimageSpace'>
+                        <img className='shippingbookImg' src={this.state.person.image}></img>
+                        <div>
+                            <div className='shippingbookName'>{JSON.parse(localStorage.getItem("abc"))[0].title}</div>
+                            <div
+                                className='shippingauthorName'>{JSON.parse(localStorage.getItem("abc"))[0].author}</div>
+                            <div
+                                className='shippingbookName'>Rs.{JSON.parse(localStorage.getItem("abc"))[0].price}</div>
                         </div>
-                        <div className='bookName'>{}</div>
-                        <div className='authorName'>{}</div>
-                        <div className='bookName'>Rs.{}</div>
                     </div>
                 </div>
             </div>
