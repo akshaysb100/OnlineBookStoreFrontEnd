@@ -202,7 +202,7 @@ class CustomerDetails extends Component {
                             </div>
                             <div style={{marginTop:"-2%"}}>
                                 <TextField
-                                    label="LandMark"
+                                    label="Country"
                                     className='detailsBox'
                                     id="outlined-start-adornment"
 
@@ -214,7 +214,7 @@ class CustomerDetails extends Component {
                                     disabled={this.state.disableForm}
                                 />
                             </div>
-                            <p style={{paddingLeft:"3em"}}>Type</p>
+                            {/*<p style={{paddingLeft:"3em"}}>Type</p>*/}
                             <div className='type'>
                                 <div className="RadioButton1">
                                     <input type="radio" name="place" value="home"/> Home

@@ -21,9 +21,9 @@ export default function Routing() {
             <Route path="/summery">
                 <PlaceOrder />
             </Route>
-            <Route path="/customerDetails">
+           {/* <Route path="/customerDetails">
                 <CustomerDetails />
-            </Route>
+            </Route>*/}
         </Router>
     );
 }

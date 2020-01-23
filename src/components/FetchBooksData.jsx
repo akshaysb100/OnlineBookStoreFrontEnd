@@ -41,7 +41,6 @@ class FetchBooksData extends React.Component {
             console.log("keys" + JSON.stringify(item));
 
             return (
-                (i + 1) % 5 === 0 ? <br/> :
                     <div className="div">
                         <div className='card'>
                             <div className="tooltip">
@@ -62,7 +61,7 @@ class FetchBooksData extends React.Component {
         return (
             <div><br/><br/>
                 <div className='books'>Books
-                    <div className='itemsShow'>(52 items)</div>
+                    <div className='itemsShow'>({this.state.person.length} items)</div>
                 </div>
                 <div className='margin'>
                     <div>

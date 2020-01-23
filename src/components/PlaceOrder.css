@@ -13,3 +13,11 @@ div.scroll {
     height: 2em;
     backgroundColor: "#0588f9"
 }
+
+.form{
+    marginTop:2em;
+    margin-left: 45em;
+    margin: 2em 10em;
+    padding: 0em;
+    width: 41em;
+    height: 20em;}
