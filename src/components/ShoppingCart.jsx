@@ -13,10 +13,8 @@ class ShoppingCart extends Component {
 
     async componentDidMount() {
         let data = JSON.parse(localStorage.getItem("abc"));
-        console.log(data)
         await this.setState({loading: false});
         await this.setState({person: data});
-        console.log(this.state.person)
     }
 
 
