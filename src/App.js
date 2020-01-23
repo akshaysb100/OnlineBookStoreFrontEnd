@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
-import CustomerDetails from './components/CustomerDetails'
+import Routing from "./router";
+import CustomerDetails from "./components/CustomerDetails";
 class App extends Component{
 
     render(){
       return (
           <div className="container">
-              <CustomerDetails />
+              <CustomerDetails/>
           </div>
       );
     }

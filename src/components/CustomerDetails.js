@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React,{Component} from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -51,7 +51,8 @@ class CustomerDetails extends Component {
             pincodeError: '',
             locality: '',
             city: '',
-            cityError: ''
+            cityError: '',
+            disableForm:false
         };
     }
 
@@ -71,11 +72,10 @@ class CustomerDetails extends Component {
 
     submit() {
         if (this.valid() == true) {
+            this.setState({disableForm:true})
+            alert("Successfull!!!!!!!!")
         }
-        this.setState({name: ' '});
-        this.setState({phoneNumber: ' '});
-        this.setState({pincode: ' '});
-        this.setState({city: ' '});
+        alert("Credential Invalid!!!!!!!!!")
 
     }
 
@@ -105,6 +105,7 @@ class CustomerDetails extends Component {
                                     onChange={(event) => {
                                         this.setState({name: event.target.value})
                                     }}
+                                    disabled={this.state.disableForm}
 
                                 />
                                 <p style={{
@@ -125,6 +126,7 @@ class CustomerDetails extends Component {
                                     onChange={(event) => {
                                         this.setState({phoneNumber: event.target.value})
                                     }}
+                                    disabled={this.state.disableForm}
                                 />
                                 <p style={{
                                     color: "red", fontSize: "12px"
@@ -143,6 +145,7 @@ class CustomerDetails extends Component {
                                     onChange={(event) => {
                                         this.setState({pincode: event.target.value})
                                     }}
+                                    disabled={this.state.disableForm}
                                 />
                                 <p style={{
                                     color: "red",
@@ -160,6 +163,7 @@ class CustomerDetails extends Component {
                                     }}
                                     style={{marginLeft: "4em"}}
                                     variant="outlined"
+                                    disabled={this.state.disableForm}
                                 />
                             </div>
                             <div className='nameBox' >
@@ -172,6 +176,7 @@ class CustomerDetails extends Component {
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                                     }}
                                     variant="outlined"
+                                    disabled={this.state.disableForm}
                                 />
                             </div>
                             <div className='nameBox' style={{marginTop: "1em",float:"left"}}>
@@ -187,6 +192,7 @@ class CustomerDetails extends Component {
                                     onChange={(event) => {
                                         this.setState({city: event.target.value})
                                     }}
+                                    disabled={this.state.disableForm}
                                 />
                                 <p style={{
                                     color: "red",
@@ -205,6 +211,7 @@ class CustomerDetails extends Component {
                                     }}
                                     style={{marginLeft: "4em"}}
                                     variant="outlined"
+                                    disabled={this.state.disableForm}
                                 />
                             </div>
                             <p style={{paddingLeft:"3em"}}>Type</p>
