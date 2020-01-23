@@ -49,3 +49,19 @@
     padding-left: 15px;
     color: #9b9898;
 }
+
+.shippingmargin {
+    margin-left: 8%;
+}
+
+
+.shippingbooks {
+    padding-left: 10%;
+}
+
+.shippingItemsShow {
+    font-size: 10px;
+    margin-left: 0%;
+    color: #9b9898;
+}
+
