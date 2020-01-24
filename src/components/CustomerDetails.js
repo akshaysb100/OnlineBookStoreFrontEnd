@@ -82,7 +82,7 @@ class CustomerDetails extends Component {
         }
         return true;
     }
-    
+
     selectCountry(){
         this.setState({country:"india"});
     }
@@ -277,7 +277,7 @@ class CustomerDetails extends Component {
                                 <Button variant="contained" color={"primary"}
                                         style={{backgroundColor: "#0588f9", marginTop: "1em"}}
                                         onClick={() => this.submit()}>
-                                    CHECKOUT
+                                    CONTINUE
                                 </Button>
                             </div>
                         </Paper>
@@ -286,6 +286,9 @@ class CustomerDetails extends Component {
                 <div className="orderSummaryScroll"
                      style={{display: this.state.disabledOrderSummary ? 'block' : 'none',}}>
                     <ShoppingCart/>
+                </div>
+                <div>
+                    <button >CHECKOUT</button>
                 </div>
             </div>
         );
