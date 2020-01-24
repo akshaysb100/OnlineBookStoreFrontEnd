@@ -29,7 +29,6 @@ class FetchBooksData extends React.Component {
 
     const response = await fetch(url);
     const data = await response.json();
-
     let keys = Object.keys(data);
     this.setState({ person: data, loading: false });
     console.log(this.state.person);
@@ -38,8 +37,6 @@ class FetchBooksData extends React.Component {
     this.setState({ person: dataFromChild });
   };
   render() {
-    // console.log("received data from dashboard", this.props.searchBooks);
-
     var Books = this.state.person.map((item, i) => {
       console.log("keys" + JSON.stringify(item));
 

@@ -345,7 +345,7 @@ class CustomerDetails extends Component {
                   style={{ backgroundColor: "#0588f9", marginTop: "1em" }}
                   onClick={() => this.submit()}
                 >
-                  CHECKOUT
+                  CONTINUE
                 </Button>
               </div>
             </Paper>
@@ -358,6 +358,9 @@ class CustomerDetails extends Component {
           }}
         >
           <ShoppingCart />
+        </div>
+        <div>
+          <button>CHECKOUT</button>
         </div>
       </div>
     );
