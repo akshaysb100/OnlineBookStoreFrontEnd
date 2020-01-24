@@ -82,10 +82,15 @@ class CustomerDetails extends Component {
         }
         return true;
     }
-
-
+    
+    selectCountry(){
+        this.setState({country:"india"});
+    }
+    selectOtherCountry(){
+        this.setState({country:"other"});
+    }
     submit() {
-        if (this.valid() == true) {
+            if (this.valid() == true) {
             this.state.listOfData = {
                 "customerName": this.state.name,
                 "mobileNumber":this.state.phoneNumber,
@@ -253,8 +258,9 @@ class CustomerDetails extends Component {
 
                                             </Button>
                                             <Menu {...bindMenu(popupState)}>
-                                                <MenuItem onClick={popupState.close } value={this.state.country="india"}>INDIA</MenuItem>
-                                                <MenuItem onClick={popupState.close} value={this.state.country="other"} >OTHER</MenuItem>
+                                                <MenuItem onClick={() => this.selectOtherCountry() && popupState.close}>OTHER</MenuItem>
+                                                <MenuItem onClick={() => this.selectCountry() && popupState.close}>INDIA</MenuItem>
+
                                             </Menu>
                                         </React.Fragment>
                                     )}
