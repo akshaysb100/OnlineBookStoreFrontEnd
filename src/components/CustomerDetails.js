@@ -354,6 +354,7 @@ class CustomerDetails extends Component {
           </Box>
         </div>
         <div className="continue">
+          <p>price 100</p>
           <Button
             variant="contained"
             color={"primary"}
