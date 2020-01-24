@@ -58,7 +58,8 @@ class CustomerDetails extends Component {
       disabledOrderSummary: false,
       form: true,
       listOfData: {},
-      customerDetails: []
+      customerDetails: [],
+      disabledCheckoutButton: false
     };
   }
 
@@ -96,6 +97,7 @@ class CustomerDetails extends Component {
         country: this.state.country,
         city: this.state.city
       };
+      this.setState({ disabledCheckoutButton: true });
       this.state.customerDetails.push(this.state.listOfData);
       localStorage.setItem(
         "customerData",
@@ -351,16 +353,18 @@ class CustomerDetails extends Component {
             </Paper>
           </Box>
         </div>
-        <div
-          className="orderSummaryScroll"
-          style={{
-            display: this.state.disabledOrderSummary ? "block" : "none"
-          }}
-        >
-          <ShoppingCart />
-        </div>
-        <div>
-          <button>CHECKOUT</button>
+        <div className="continue">
+          <Button
+            variant="contained"
+            color={"primary"}
+            style={{
+              backgroundColor: "#0588f9",
+              marginTop: "1em",
+              display: this.state.disabledCheckoutButton ? "block" : "none"
+            }}
+          >
+            CHECKOUT
+          </Button>
         </div>
       </div>
     );
