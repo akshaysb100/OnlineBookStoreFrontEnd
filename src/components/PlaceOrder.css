@@ -1,32 +1,36 @@
 div.scroll {
-    marginTop: 2em;
-    margin: 2em 10em;
-    padding: 0em;
-    width: 41em;
-    height: 20em;
-    overflow-x: hidden;
-    text-align: justify;
+  padding-top: 0em;
+  margin: 1em 10em;
+  width: 41em;
+  height: 20em;
+  overflow-x: hidden;
+  text-align: justify;
 }
-div.orderSummaryScroll{
-    marginTop: 2em;
-    margin-left: 0em;
-    margin: 0em -16em;
-    width: 40em;
-    height: 20em;
-    overflow-x: hidden;
-    text-align: justify;
-}
-
-.placedOrderButton{
-    margin-left: 43em;
-    height: 2em;
-    backgroundColor: "#0588f9"
+div.orderSummaryScroll {
+  margintop: 2em;
+  margin-left: 0em;
+  margin: 0em -16em;
+  width: 40em;
+  height: 20em;
+  overflow-x: hidden;
+  text-align: justify;
 }
 
-.form{
-    marginTop:2em;
-    margin-left: 45em;
-    margin: 2em 10em;
-    padding: 0em;
-    width: 41em;
-    height: 20em;}
+.placedOrderButton {
+  margin-left: 41em;
+  height: 2em;
+  backgroundcolor: "#0588f9";
+}
+
+.form {
+  margintop: 2em;
+  margin-left: 45em;
+  margin: 2em 10em;
+  padding: 0em;
+  width: 41em;
+  height: 20em;
+}
+
+.myCart {
+  margin: 1em 15em;
+}

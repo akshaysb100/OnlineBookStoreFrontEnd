@@ -5,11 +5,22 @@ import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import "./mytoolbar.css";
 import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { withRouter } from "react-router-dom";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import axios from "axios";
 //import InputAdornment from '@material-ui/core/InputAdornment';
+import { withStyles } from "@material-ui/core/styles";
+
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px"
+  }
+}))(Badge);
 
 class MyToolBar extends React.Component {
   constructor(props) {
@@ -28,6 +39,14 @@ class MyToolBar extends React.Component {
     }
   };
 
+  async componentDidMount() {
+    if (this.state.valueIcon < JSON.parse(localStorage.getItem("abc")).length) {
+      await this.setState({
+        valueIcon: JSON.parse(localStorage.getItem("abc")).length
+      });
+    }
+  }
+
   searchBookByTitle(searchData) {
     // return Axios({
     //     method: 'GET',
@@ -36,7 +55,7 @@ class MyToolBar extends React.Component {
     axios
       .get(this.url + "searchByAuthorOrTitle?searchElement=" + searchData)
       .then(result => {
-        // console.log(result.data);
+        console.log("===>", result.data);
 
         // this.props.history.push("/",{searchBooks:result.data})
         this.props.books(result.data);
@@ -44,24 +63,25 @@ class MyToolBar extends React.Component {
       });
   }
 
-  handleSearchBook = () => {
+  handleSearchBook = e => {
     let searchDataValue = this.state.searchValue;
-    this.searchBookByTitle(searchDataValue)
-      .then(data => {
-        // let allBooks=data.data.result;
-        // for(let i=0;i<allBooks.length;i++){
-        //     if(allBooks[i].title.length>25)
-        //     {
-        //         allBooks[i].title=allBooks[i].title.slice(0, 25);
-        //         allBooks[i].title=allBooks[i].title+"...";
-        //     }
-        // }
-        console.log(data);
-        // this.setState({ getBooks: allBooks });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (e.key == "Enter")
+      this.searchBookByTitle(searchDataValue)
+        .then(data => {
+          // let allBooks=data.data.result;
+          // for(let i=0;i<allBooks.length;i++){
+          //     if(allBooks[i].title.length>25)
+          //     {
+          //         allBooks[i].title=allBooks[i].title.slice(0, 25);
+          //         allBooks[i].title=allBooks[i].title+"...";
+          //     }
+          // }
+          console.log(data);
+          // this.setState({ getBooks: allBooks });
+        })
+        .catch(err => {
+          console.log(err);
+        });
   };
 
   render() {
