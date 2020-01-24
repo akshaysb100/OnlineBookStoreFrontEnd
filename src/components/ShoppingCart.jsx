@@ -7,7 +7,8 @@ class ShoppingCart extends Component {
     this.state = {
       clicks: 0,
       loading: true,
-      person: []
+      person: [],
+      totalAmount: 0
     };
   }
 
@@ -29,6 +30,12 @@ class ShoppingCart extends Component {
                 <div className="shippingbookName">{item.title}</div>
                 <div className="shippingauthorName">{item.author}</div>
                 <div className="shippingbookName">Rs.{item.price}</div>
+                <div>
+                  {
+                    (this.state.totalAmount =
+                      this.state.totalAmount + item.price)
+                  }
+                </div>
               </div>
             </div>
           </div>

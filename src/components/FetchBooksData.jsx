@@ -25,7 +25,7 @@ class FetchBooksData extends React.Component {
   };
 
   async componentDidMount() {
-    const url = "http://3.135.204.220:8080/books/showBooks";
+    const url = "http://192.168.0.167:8080/books/showBooks";
 
     const response = await fetch(url);
     const data = await response.json();
@@ -33,6 +33,7 @@ class FetchBooksData extends React.Component {
     this.setState({ person: data, loading: false });
     console.log(this.state.person);
   }
+
   handleChildData = dataFromChild => {
     this.setState({ person: dataFromChild });
   };
