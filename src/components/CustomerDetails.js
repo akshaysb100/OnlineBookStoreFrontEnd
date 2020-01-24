@@ -103,8 +103,21 @@ class CustomerDetails extends Component {
         "customerData",
         JSON.stringify(this.state.customerDetails)
       );
-
+      let totalAmount = 0;
+      let size = JSON.parse(localStorage.getItem("abc")).length;
       this.setState({ disableForm: true });
+      for (let i = 0; i < size; i++) {
+        totalAmount =
+          totalAmount + JSON.parse(localStorage.getItem("abc"))[i].price;
+      }
+      console.log(totalAmount);
+      if (JSON.parse(localStorage.getItem("customerData")).country == "india") {
+        totalAmount = totalAmount + 50;
+      } else {
+        totalAmount = totalAmount + 200;
+      }
+
+      localStorage.setItem("price", JSON.stringify(totalAmount));
       alert("Successfull!!!!!!!!");
       this.setState({ disabledOrderSummary: true });
     } else {
@@ -354,7 +367,7 @@ class CustomerDetails extends Component {
           </Box>
         </div>
         <div className="continue">
-          <p>price 100</p>
+          <p>TOTAL PRICE :{localStorage.getItem("price")}</p>
           <Button
             variant="contained"
             color={"primary"}
