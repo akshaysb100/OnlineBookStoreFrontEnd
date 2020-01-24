@@ -89,7 +89,7 @@
 }
 
 .authorName {
-    font-size: 10%;
+    font-size: 60%;
     padding-left: 15%;
     color: #9b9898;
 }
@@ -129,6 +129,7 @@
 }
 
 .iconButton {
+    color:white;
     margin-left: 0em;
 }
 

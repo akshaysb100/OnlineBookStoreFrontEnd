@@ -45,7 +45,7 @@ class ShoppingCart extends Component {
                 <div className='shippingbooks'>
                 </div>
                 <div className='shippingmargin'>
-                    <div>
+                    <div className="marginbooks">
                         {Books}
                     </div>
                 </div>

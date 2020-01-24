@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -10,7 +10,9 @@ import {grey} from "@material-ui/core/colors";
 import './CustomerDetails.css'
 import ShoppingCart from "./ShoppingCart";
 import './PlaceOrder.css'
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 
 const useStyles = makeStyles(theme => ({
@@ -41,8 +43,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 class CustomerDetails extends Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -54,9 +54,14 @@ class CustomerDetails extends Component {
             pincodeError: '',
             locality: '',
             city: '',
+            country:'',
             cityError: '',
-            disableForm:false,
-            disabledOrderSummary:false
+            disableForm: false,
+            disabledOrderSummary: false,
+            form: true,
+            listOfData: {},
+            customerDetails: []
+
         };
     }
 
@@ -64,12 +69,16 @@ class CustomerDetails extends Component {
         if (!this.state.name.match("[A-Z]{1}[a-zA-Z]")) {
             this.setState({nameError: "Invalid Name"});
             this.setState({name: ' '});
+            return false
         } else if (!this.state.phoneNumber.match("(91)\\s[7-9]{1}[0-9]{9}")) {
             this.setState({phoneNumberError: "Invalid Phone Number"});
+            return false
         } else if (!this.state.pincode.match("[0-9]{3}[0-9]{3}")) {
             this.setState({pincodeError: "Invalid Pincode"});
+            return false
         } else if (!this.state.city.match("[A-Z][a-z]{2,}")) {
             this.setState({cityError: "Invalid City Name"});
+            return false
         }
         return true;
     }
@@ -77,10 +86,21 @@ class CustomerDetails extends Component {
 
     submit() {
         if (this.valid() == true) {
-            this.setState({disableForm:true})
+            this.state.listOfData = {
+                "customerName": this.state.name,
+                "mobileNumber":this.state.phoneNumber,
+                "pincode":this.state.pincode,
+                "address":this.state.address,
+                "country":this.state.country,
+                "city":this.state.city
+            };
+            this.state.customerDetails.push(this.state.listOfData)
+            localStorage.setItem("customerData", JSON.stringify(this.state.customerDetails))
+
+            this.setState({disableForm: true})
             alert("Successfull!!!!!!!!")
             this.setState({disabledOrderSummary: true})
-        }else {
+        } else {
             alert("Credential Invalid!!!!!!!!!")
         }
 
@@ -103,9 +123,9 @@ class CustomerDetails extends Component {
                             <div className='nameBox' style={{float: "left"}}>
                                 <TextField
                                     label="Name"
-/*
-                                    className="detailsBox"
-*/
+                                    /*
+                                                                        className="detailsBox"
+                                    */
                                     id="outlined-start-adornment"
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
@@ -118,11 +138,11 @@ class CustomerDetails extends Component {
 
                                 />
                                 <p style={{
-                                    color: "red", fontSize: "12px", marginTop: "-2%",
+                                    color: "red", fontSize: "12px", marginTop: "1%",
                                     marginBottom: "-3em", paddingLeft: "3em"
                                 }}>{this.state.nameError}</p>
                             </div>
-                            <div style={{float: "left",marginBottom:"1em"}}>
+                            <div style={{float: "left", marginBottom: "1em"}}>
                                 <TextField
                                     label="Phone number"
                                     style={{marginLeft: "4em", marginBottom: "3em"}}
@@ -141,7 +161,7 @@ class CustomerDetails extends Component {
                                     , marginTop: "-15%", paddingLeft: " 40%"
                                 }}>{this.state.phoneNumberError}</p>
                             </div>
-                            <div className='nameBox' style={{float: "left",marginBottom:"3em"}}>
+                            <div className='nameBox' style={{float: "left", marginBottom: "3em"}}>
                                 <TextField
                                     label="PinCode"
                                     id="outlined-start-adornment"
@@ -172,25 +192,28 @@ class CustomerDetails extends Component {
                                     disabled={this.state.disableForm}
                                 />
                             </div>
-                            <div className='nameBox' >
+                            <div className='nameBox'>
                                 <TextField
                                     label="Address"
                                     id="outlined-start-adornment"
                                     className='longDetailsBox'
-                                    style={{marginTop:"-5%"}}
+                                    style={{marginTop: "-5%"}}
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                                     }}
                                     variant="outlined"
+                                    onChange={(event) => {
+                                        this.setState({address: event.target.value})
+                                    }}
                                     disabled={this.state.disableForm}
                                 />
                             </div>
-                            <div className='nameBox' style={{marginTop: "1em",float:"left"}}>
+                            <div className='nameBox' style={{marginTop: "1em", float: "left"}}>
                                 <TextField
                                     label="City/Town"
                                     className='detailsBox'
                                     id="outlined-start-adornment"
-                                    style={{marginTop:"-11%"}}
+                                    style={{marginTop: "-11%"}}
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                                     }}
@@ -203,10 +226,11 @@ class CustomerDetails extends Component {
                                 <p style={{
                                     color: "red",
                                     fontSize: "12px",
-                                    paddingLeft: "3em"
+                                    paddingLeft: "3em",
+                                    marginTop: "0em"
                                 }}>{this.state.cityError}</p>
                             </div>
-                            <div style={{marginTop:"-2%"}}>
+                            <div style={{marginTop: "-2%"}}>
                                 <TextField
                                     label="Landmark"
                                     id="outlined-start-adornment"
@@ -218,32 +242,46 @@ class CustomerDetails extends Component {
                                     disabled={this.state.disableForm}
                                 />
                             </div>
-                            <div >
-                                <div style={{marginLeft:"0em",marginTop:"2em"}}>
-                                    Country
-                                </div>
-                                <div className="RadioButton1">
-                                    <input type="radio" name="place" value="home"/>INDIA
-                                </div>
-                                <div className="RadioButton2">
-                                    <input type="radio" name="place" value="work"/>OTHER
+                            <div>
+                                <div className='country'>
+                                <PopupState variant="popover" popupId="demo-popup-menu">
+                                    {popupState => (
+                                        <React.Fragment>
+                                            <Button variant="contained"
+                                                  {...bindTrigger(popupState)}>
+                                                Please Select Country
+
+                                            </Button>
+                                            <Menu {...bindMenu(popupState)}>
+                                                <MenuItem onClick={popupState.close } value={this.state.country="india"}>INDIA</MenuItem>
+                                                <MenuItem onClick={popupState.close} value={this.state.country="other"} >OTHER</MenuItem>
+                                            </Menu>
+                                        </React.Fragment>
+                                    )}
+                                </PopupState>
                                 </div>
                             </div>
+                            <p style={{
+                                color: "red",
+                                fontSize: "12px",
+                                paddingLeft: "3em",
+                                marginTop: "0em"
+                            }}>{this.state.countryError}</p>
                             <div className="checkout">
                                 <Button variant="contained" color={"primary"}
-                                        style={{backgroundColor: "#0588f9",marginTop: "2em"}}
+                                        style={{backgroundColor: "#0588f9", marginTop: "1em"}}
                                         onClick={() => this.submit()}>
                                     CHECKOUT
                                 </Button>
                             </div>
                         </Paper>
                     </Box>
-                    </div>
-                    <div className="orderSummaryScroll"
-                         style={{display: this.state.disabledOrderSummary ? 'block' : 'none',}}>
-                        <ShoppingCart/>
-                    </div>
                 </div>
+                <div className="orderSummaryScroll"
+                     style={{display: this.state.disabledOrderSummary ? 'block' : 'none',}}>
+                    <ShoppingCart/>
+                </div>
+            </div>
         );
     }
 }

@@ -12,7 +12,7 @@ class PlaceOrder extends Component {
         super(props);
         this.state = {
             disabledCustomerForm: false,
-            disabledOrderSummary:false
+            disabledOrderSummary: false
         }
     }
 
@@ -23,18 +23,23 @@ class PlaceOrder extends Component {
     render() {
         return (
             <div>
-                <div className="scroll" >
-                    My Cart ({JSON.parse(localStorage.getItem("abc")).length})
-                    <ShoppingCart/>
+
+                <div>
+                    <div className="myCart">
+                        My Cart ({JSON.parse(localStorage.getItem("abc")).length})
+                    </div>
+                    <div className="scroll">
+                        <ShoppingCart/>
+                    </div>
                 </div>
                 <div className="placedOrderButton">
                     <Button variant="contained" color={"primary"}
                             style={{backgroundColor: "#0588f9"}} onClick={this.goToForm}>
                         PLACED ORDER</Button>
                 </div>
-                <div  style={{display: this.state.disabledCustomerForm ? 'block' : 'none'}}>
-                    <div className="form" style={{marginLeft:"27em"}}>
-                        <CustomerDetails />
+                <div style={{display: this.state.disabledCustomerForm ? 'block' : 'none'}}>
+                    <div className="form" style={{marginLeft: "27em"}}>
+                        <CustomerDetails/>
                     </div>
                 </div>
             </div>

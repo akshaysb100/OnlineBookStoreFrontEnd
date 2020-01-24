@@ -5,12 +5,35 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import './mytoolbar.css'
 import IconButton from "@material-ui/core/IconButton";
+import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import {withRouter} from 'react-router-dom';
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledBadge = withStyles(theme => ({
+    badge: {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+    },
+}))(Badge);
 
 class MyToolBar extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state={
+            valueIcon:0
+        }
+    }
+    async componentDidMount(){
+        if (this.state.valueIcon< JSON.parse(localStorage.getItem("abc")).length){
+            await this.setState({valueIcon:JSON.parse(localStorage.getItem("abc")).length}
+            )
+        }
+    }
     goToCart = (event) => {
         this.props.history.push('summery');
     }
@@ -37,7 +60,9 @@ class MyToolBar extends React.Component {
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             color="inherit">
-                            <AddShoppingCartIcon className='iconButton' onClick={this.goToCart}>  </AddShoppingCartIcon>
+                            <StyledBadge badgeContent={this.state.valueIcon} color="secondary">
+                                <AddShoppingCartIcon className='iconButton' onClick={this.goToCart}/>
+                            </StyledBadge>
                         </IconButton>
                         </div>
                     </Toolbar>
