@@ -4,7 +4,6 @@ import './PlaceOrder.css'
 import Button from "@material-ui/core/Button";
 import {Route, withRouter} from 'react-router-dom';
 import CustomerDetails from "./CustomerDetails";
-import TextField from "@material-ui/core/TextField";
 
 class PlaceOrder extends Component {
 
@@ -12,7 +11,8 @@ class PlaceOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            disabledCustomerForm: false
+            disabledCustomerForm: false,
+            disabledOrderSummary:false
         }
     }
 
@@ -23,7 +23,8 @@ class PlaceOrder extends Component {
     render() {
         return (
             <div>
-                <div className="scroll" style={{}}>
+                <div className="scroll" >
+                    My Cart ({JSON.parse(localStorage.getItem("abc")).length})
                     <ShoppingCart/>
                 </div>
                 <div className="placedOrderButton">

@@ -1,0 +1,26 @@
+.nameBox {
+    margin-left: 1em;
+    margin-bottom: 2em;
+}
+
+.longDetailsBox {
+    width: 34em;
+    height: 4em;
+}
+.detailsBox{
+    width: 15em;
+    height: 4em;
+}
+
+
+.RadioButton1{
+    color: grey;
+    margin-left: 10em;
+    margin-top: 1em;
+}
+
+.RadioButton2{
+    color: grey;
+    margin-left: 20em;
+    margin-top: -1.2em;
+}

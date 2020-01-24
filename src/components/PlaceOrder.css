@@ -1,8 +1,17 @@
 div.scroll {
-    marginTop:2em;
+    marginTop: 2em;
     margin: 2em 10em;
     padding: 0em;
     width: 41em;
+    height: 20em;
+    overflow-x: hidden;
+    text-align: justify;
+}
+div.orderSummaryScroll{
+    marginTop: 2em;
+    margin-left: 0em;
+    margin: 0em -16em;
+    width: 40em;
     height: 20em;
     overflow-x: hidden;
     text-align: justify;

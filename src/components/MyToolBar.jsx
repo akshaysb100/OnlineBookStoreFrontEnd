@@ -37,8 +37,7 @@ class MyToolBar extends React.Component {
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             color="inherit">
-
-                            <AddShoppingCartIcon className='iconButton' onClick={this.goToCart}/>
+                            <AddShoppingCartIcon className='iconButton' onClick={this.goToCart}>  </AddShoppingCartIcon>
                         </IconButton>
                         </div>
                     </Toolbar>

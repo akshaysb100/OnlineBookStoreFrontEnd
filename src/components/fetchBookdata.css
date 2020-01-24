@@ -147,21 +147,6 @@
     padding-left: 1%;
 }
 
-.detailsBox{
-    padding-left: 6em;
-    width: 16em;
-    height: 4em;
-}
-
-.longDetailsBox {
-    width: 36em;
-    height: 4em;
-}
-
-.nameBox {
-    padding-left: 3em;
-    margin-bottom: 2em;
-}
 
 /*
 
@@ -174,3 +159,4 @@
     background: #A0C5E8;
     padding: 2em 0;
 }*/
+

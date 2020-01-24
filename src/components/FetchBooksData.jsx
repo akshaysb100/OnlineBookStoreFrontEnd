@@ -25,7 +25,7 @@ class FetchBooksData extends React.Component {
 
 
     async componentDidMount() {
-        const url = "http://192.168.0.167:8080/books/showBooks";
+        const url = "http://localhost:8080/books/showBooks";
         const response = await fetch(url);
         const data = await response.json();
         let keys = Object.keys(data)

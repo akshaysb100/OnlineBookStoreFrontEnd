@@ -30,10 +30,10 @@
   height: fit-content
 }
 
-.detailsBox{
+/*.detailsBox{
   margin-left: 13%;
   margin-top: 7%;
-}
+}*/
 .checkout{
   margin-left: 75%;
   margin-bottom: 2em;
@@ -69,21 +69,6 @@
 input[type="radio"] {
   margin-right: 0;
 }
-.RadioButton1{
-  color: grey;
-  margin-left: 1em;
-  margin-top: 1;
-}
-.RadioButton2{
-  color: grey;
-  margin-left: 26%;
-  margin-top: -1.2em;
-}
-.RadioButton3{
-  color: grey;
-  margin-left: 50%;
-  margin-top: -1.2em;
-}
 .NameAndEmail{
   color: black;
 }
@@ -101,7 +86,7 @@ input[type="radio"] {
 }
 
 .paper{
-  width: 40em;
+  width: 36em;
 }
 
 .type{

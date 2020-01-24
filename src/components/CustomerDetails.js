@@ -3,11 +3,14 @@ import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import clsx from "clsx";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
 import {grey} from "@material-ui/core/colors";
+import './CustomerDetails.css'
+import ShoppingCart from "./ShoppingCart";
+import './PlaceOrder.css'
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +55,8 @@ class CustomerDetails extends Component {
             locality: '',
             city: '',
             cityError: '',
-            disableForm:false
+            disableForm:false,
+            disabledOrderSummary:false
         };
     }
 
@@ -70,12 +74,15 @@ class CustomerDetails extends Component {
         return true;
     }
 
+
     submit() {
         if (this.valid() == true) {
             this.setState({disableForm:true})
             alert("Successfull!!!!!!!!")
+            this.setState({disabledOrderSummary: true})
+        }else {
+            alert("Credential Invalid!!!!!!!!!")
         }
-        alert("Credential Invalid!!!!!!!!!")
 
     }
 
@@ -96,7 +103,9 @@ class CustomerDetails extends Component {
                             <div className='nameBox' style={{float: "left"}}>
                                 <TextField
                                     label="Name"
+/*
                                     className="detailsBox"
+*/
                                     id="outlined-start-adornment"
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
@@ -113,10 +122,9 @@ class CustomerDetails extends Component {
                                     marginBottom: "-3em", paddingLeft: "3em"
                                 }}>{this.state.nameError}</p>
                             </div>
-                            <div style={{float: "left"}}>
+                            <div style={{float: "left",marginBottom:"1em"}}>
                                 <TextField
                                     label="Phone number"
-                                    className="detailsBox"
                                     style={{marginLeft: "4em", marginBottom: "3em"}}
                                     id="outlined-start-adornment"
                                     InputProps={{
@@ -133,11 +141,10 @@ class CustomerDetails extends Component {
                                     , marginTop: "-15%", paddingLeft: " 40%"
                                 }}>{this.state.phoneNumberError}</p>
                             </div>
-                            <div className='nameBox' style={{float: "left"}}>
+                            <div className='nameBox' style={{float: "left",marginBottom:"3em"}}>
                                 <TextField
                                     label="PinCode"
                                     id="outlined-start-adornment"
-                                    className="detailsBox"
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                                     }}
@@ -156,7 +163,6 @@ class CustomerDetails extends Component {
                             <div style={{float: "left"}}>
                                 <TextField
                                     label="Locality"
-                                    className="detailsBox"
                                     id="outlined-start-adornment"
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
@@ -202,10 +208,8 @@ class CustomerDetails extends Component {
                             </div>
                             <div style={{marginTop:"-2%"}}>
                                 <TextField
-                                    label="Country"
-                                    className='detailsBox'
+                                    label="Landmark"
                                     id="outlined-start-adornment"
-
                                     InputProps={{
                                         startAdornment: <InputAdornment position="start"></InputAdornment>,
                                     }}
@@ -214,28 +218,32 @@ class CustomerDetails extends Component {
                                     disabled={this.state.disableForm}
                                 />
                             </div>
-                            {/*<p style={{paddingLeft:"3em"}}>Type</p>*/}
-                            <div className='type'>
+                            <div >
+                                <div style={{marginLeft:"0em",marginTop:"2em"}}>
+                                    Country
+                                </div>
                                 <div className="RadioButton1">
-                                    <input type="radio" name="place" value="home"/> Home
+                                    <input type="radio" name="place" value="home"/>INDIA
                                 </div>
                                 <div className="RadioButton2">
-                                    <input type="radio" name="place" value="work"/> Work
-                                </div>
-                                <div className="RadioButton3">
-                                    <input type="radio" name="place" value="other"/> Other
+                                    <input type="radio" name="place" value="work"/>OTHER
                                 </div>
                             </div>
                             <div className="checkout">
-                                <Button variant="contained" color={"primary"} style={{backgroundColor: "#0588f9"}}
+                                <Button variant="contained" color={"primary"}
+                                        style={{backgroundColor: "#0588f9",marginTop: "2em"}}
                                         onClick={() => this.submit()}>
                                     CHECKOUT
                                 </Button>
                             </div>
                         </Paper>
                     </Box>
+                    </div>
+                    <div className="orderSummaryScroll"
+                         style={{display: this.state.disabledOrderSummary ? 'block' : 'none',}}>
+                        <ShoppingCart/>
+                    </div>
                 </div>
-            </div>
         );
     }
 }
