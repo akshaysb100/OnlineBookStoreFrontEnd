@@ -60,6 +60,9 @@ class MyToolBar extends React.Component {
         // this.props.history.push("/",{searchBooks:result.data})
         this.props.books(result.data);
         return result;
+      })
+      .catch(e => {
+        alert("Book Not Found");
       });
   }
 
@@ -80,7 +83,10 @@ class MyToolBar extends React.Component {
           // this.setState({ getBooks: allBooks });
         })
         .catch(err => {
+          console.log("no book found");
           console.log(err);
+
+          // alert('Catch is ignored, because there are no errors');
         });
   };
 
