@@ -355,15 +355,16 @@ class CustomerDetails extends Component {
             </Paper>
           </Box>
         </div>
-        <div className="continue">
-          <p>TOTAL PRICE :{localStorage.getItem("price")}</p>
+        <div className="continue" style={{display: this.state.disabledCheckoutButton ? "block" : "none"}}>
+          <p style={{fontSize:"112%"}}>TOTAL PRICE :{localStorage.getItem("price")}</p>
           <Button
             variant="contained"
             color={"primary"}
             style={{
               backgroundColor: "#0588f9",
-              marginTop: "1em",
-              display: this.state.disabledCheckoutButton ? "block" : "none"
+              marginTop: "0em",
+              marginBottom: "17em",
+              marginLeft: "17em"
             }}
           >
             CHECKOUT
