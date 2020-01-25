@@ -13,7 +13,11 @@ import "./PlaceOrder.css";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-
+import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -37,6 +41,10 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     width: 200
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
   }
 }));
 
@@ -67,15 +75,30 @@ class CustomerDetails extends Component {
     if (!this.state.name.match("[A-Z]{1}[a-zA-Z]")) {
       this.setState({ nameError: "Invalid Name" });
       this.setState({ name: " " });
+      setTimeout(() => {
+        this.setState({ nameError: " " });
+      }, 3000);
+
       return false;
-    } else if (!this.state.phoneNumber.match("(91)\\s[7-9]{1}[0-9]{9}")) {
+    } else if (!this.state.phoneNumber.match("[7-9]{1}[0-9]{9}")) {
       this.setState({ phoneNumberError: "Invalid Phone Number" });
+      setTimeout(() => {
+        this.setState({ phoneNumberError: " " });
+      }, 3000);
       return false;
-    } else if (!this.state.pincode.match("[0-9]{3}[0-9]{3}")) {
+    } else if (
+      !this.state.pincode.match("^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$")
+    ) {
       this.setState({ pincodeError: "Invalid Pincode" });
+      setTimeout(() => {
+        this.setState({ pincodeError: " " });
+      }, 3000);
       return false;
     } else if (!this.state.city.match("[A-Z][a-z]{2,}")) {
       this.setState({ cityError: "Invalid City Name" });
+      setTimeout(() => {
+        this.setState({ cityError: " " });
+      }, 3000);
       return false;
     }
     return true;
@@ -111,17 +134,16 @@ class CustomerDetails extends Component {
           totalAmount + JSON.parse(localStorage.getItem("abc"))[i].price;
       }
       console.log(totalAmount);
-      if (JSON.parse(localStorage.getItem("customerData")).country == "india") {
+      if (
+        JSON.parse(localStorage.getItem("customerData"))[0].country == "india"
+      ) {
         totalAmount = totalAmount + 50;
       } else {
         totalAmount = totalAmount + 200;
       }
 
       localStorage.setItem("price", JSON.stringify(totalAmount));
-      alert("Successfull!!!!!!!!");
       this.setState({ disabledOrderSummary: true });
-    } else {
-      alert("Credential Invalid!!!!!!!!!");
     }
   }
 
@@ -152,9 +174,6 @@ class CustomerDetails extends Component {
               <div className="nameBox" style={{ float: "left" }}>
                 <TextField
                   label="Name"
-                  /*
-                                                                        className="detailsBox"
-                                    */
                   id="outlined-start-adornment"
                   InputProps={{
                     startAdornment: (
@@ -313,34 +332,20 @@ class CustomerDetails extends Component {
               </div>
               <div>
                 <div className="country">
-                  <PopupState variant="popover" popupId="demo-popup-menu">
-                    {popupState => (
-                      <React.Fragment>
-                        <Button
-                          variant="contained"
-                          {...bindTrigger(popupState)}
-                        >
-                          Please Select Country
-                        </Button>
-                        <Menu {...bindMenu(popupState)}>
-                          <MenuItem
-                            onClick={() =>
-                              this.selectOtherCountry() && popupState.close
-                            }
-                          >
-                            OTHER
-                          </MenuItem>
-                          <MenuItem
-                            onClick={() =>
-                              this.selectCountry() && popupState.close
-                            }
-                          >
-                            INDIA
-                          </MenuItem>
-                        </Menu>
-                      </React.Fragment>
-                    )}
-                  </PopupState>
+                  <FormControl
+                    className="formControl"
+                    disabled={this.state.disableForm}
+                  >
+                    <InputLabel htmlFor="grouped-select">Country</InputLabel>
+                    <Select
+                      value={this.state.country}
+                      onChange={e => this.setState({ country: e.target.value })}
+                      input={<Input id="grouped-select" />}
+                    >
+                      <MenuItem value="india">INDIA</MenuItem>
+                      <MenuItem value="other">OTHER</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
               </div>
               <p
@@ -366,15 +371,23 @@ class CustomerDetails extends Component {
             </Paper>
           </Box>
         </div>
-        <div className="continue">
-          <p>TOTAL PRICE :{localStorage.getItem("price")}</p>
+        <div
+          className="continue"
+          style={{
+            display: this.state.disabledCheckoutButton ? "block" : "none"
+          }}
+        >
+          <p style={{ fontSize: "112%" }}>
+            TOTAL PRICE :{localStorage.getItem("price")}
+          </p>
           <Button
             variant="contained"
             color={"primary"}
             style={{
               backgroundColor: "#0588f9",
-              marginTop: "1em",
-              display: this.state.disabledCheckoutButton ? "block" : "none"
+              marginTop: "0em",
+              marginBottom: "17em",
+              marginLeft: "17em"
             }}
           >
             CHECKOUT

@@ -3,11 +3,10 @@ import { withRouter } from "react-router-dom";
 import "./tooltip.css";
 import "./fetchBookdata.css";
 import ToolBar from "./MyToolBar";
+
 class FetchBooksData extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(this.location.state.searchBooks)
-    // this.setState({books:this.state.location.searchBooks})
   }
 
   state = {
@@ -17,26 +16,47 @@ class FetchBooksData extends React.Component {
     listShoppingCart: []
   };
 
-  goToCart = book => {
+  goToCart = event => {
     document.activeElement.style.backgroundColor = "#0588f9";
     document.activeElement.innerHTML = "ADDED TO BAG";
-    this.state.listShoppingCart.push(book);
-    localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart));
+    let value = 0;
+
+    if (localStorage.getItem("abc") == null) {
+      this.state.listShoppingCart.push(event);
+      localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart));
+    } else {
+      let data = JSON.parse(localStorage.getItem("abc"));
+      let siz = JSON.parse(localStorage.getItem("abc")).length;
+      for (let i = 0; i < siz; i++) {
+        if (JSON.parse(localStorage.getItem("abc"))[i].id == event.id) {
+          value = 1;
+        }
+      }
+      if (value == 0) {
+        console.log(data);
+        data.push(event);
+        this.state.listShoppingCart = data;
+        localStorage.setItem(
+          "abc",
+          JSON.stringify(this.state.listShoppingCart)
+        );
+      }
+    }
   };
 
   async componentDidMount() {
     const url = "http://3.135.204.220:8080/books/showBooks";
-
     const response = await fetch(url);
     const data = await response.json();
     let keys = Object.keys(data);
     this.setState({ person: data, loading: false });
-    console.log("person ", this.state.person);
+    console.log(this.state.person);
   }
 
   handleChildData = dataFromChild => {
     this.setState({ person: dataFromChild });
   };
+
   render() {
     var Books = this.state.person.map((item, i) => {
       console.log("keys" + JSON.stringify(item));
