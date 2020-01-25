@@ -34,3 +34,7 @@ div.orderSummaryScroll {
 .myCart {
   margin: 1em 15em;
 }
+
+.formControl{
+  width: 5em;
+}
