@@ -68,26 +68,26 @@ class MyToolBar extends React.Component {
 
   handleSearchBook = e => {
     let searchDataValue = this.state.searchValue;
-    if (e.key == "Enter")
-      this.searchBookByTitle(searchDataValue)
-        .then(data => {
-          // let allBooks=data.data.result;
-          // for(let i=0;i<allBooks.length;i++){
-          //     if(allBooks[i].title.length>25)
-          //     {
-          //         allBooks[i].title=allBooks[i].title.slice(0, 25);
-          //         allBooks[i].title=allBooks[i].title+"...";
-          //     }
-          // }
-          console.log(data);
-          // this.setState({ getBooks: allBooks });
-        })
-        .catch(err => {
-          console.log("no book found");
-          console.log(err);
+    //if (e.key == "Enter")
+    this.searchBookByTitle(searchDataValue)
+      .then(data => {
+        // let allBooks=data.data.result;
+        // for(let i=0;i<allBooks.length;i++){
+        //     if(allBooks[i].title.length>25)
+        //     {
+        //         allBooks[i].title=allBooks[i].title.slice(0, 25);
+        //         allBooks[i].title=allBooks[i].title+"...";
+        //     }
+        // }
+        console.log(data);
+        // this.setState({ getBooks: allBooks });
+      })
+      .catch(err => {
+        console.log("no book found");
+        console.log(err);
 
-          // alert('Catch is ignored, because there are no errors');
-        });
+        // alert('Catch is ignored, because there are no errors');
+      });
   };
 
   render() {

@@ -17,10 +17,10 @@ class FetchBooksData extends React.Component {
     listShoppingCart: []
   };
 
-  goToCart = event => {
+  goToCart = book => {
     document.activeElement.style.backgroundColor = "#0588f9";
     document.activeElement.innerHTML = "ADDED TO BAG";
-    this.state.listShoppingCart.push(event);
+    this.state.listShoppingCart.push(book);
     localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart));
   };
 
@@ -31,7 +31,7 @@ class FetchBooksData extends React.Component {
     const data = await response.json();
     let keys = Object.keys(data);
     this.setState({ person: data, loading: false });
-    console.log(this.state.person);
+    console.log("person ", this.state.person);
   }
 
   handleChildData = dataFromChild => {
