@@ -75,15 +75,20 @@ class CustomerDetails extends Component {
     if (!this.state.name.match("[A-Z]{1}[a-zA-Z]")) {
       this.setState({ nameError: "Invalid Name" });
       this.setState({ name: " " });
+      setTimeout(() => {this.setState({nameError:" "}) }, 3000);
+
       return false;
-    } else if (!this.state.phoneNumber.match("(91)\\s[7-9]{1}[0-9]{9}")) {
+    } else if (!this.state.phoneNumber.match("[7-9]{1}[0-9]{9}")) {
       this.setState({ phoneNumberError: "Invalid Phone Number" });
+      setTimeout(() => {this.setState({phoneNumberError:" "}) }, 3000);
       return false;
-    } else if (!this.state.pincode.match("[0-9]{3}[0-9]{3}")) {
+    } else if (!this.state.pincode.match("^[0-9]{6}$|^[0-9]{3}\\s{1}[0-9]{3}$")) {
       this.setState({ pincodeError: "Invalid Pincode" });
+      setTimeout(() => {this.setState({pincodeError:" "}) }, 3000);
       return false;
     } else if (!this.state.city.match("[A-Z][a-z]{2,}")) {
       this.setState({ cityError: "Invalid City Name" });
+      setTimeout(() => {this.setState({cityError:" "}) }, 3000);
       return false;
     }
     return true;
@@ -126,10 +131,7 @@ class CustomerDetails extends Component {
       }
 
       localStorage.setItem("price", JSON.stringify(totalAmount));
-      alert("Successfull!!!!!!!!");
       this.setState({ disabledOrderSummary: true });
-    } else {
-      alert("Credential Invalid!!!!!!!!!");
     }
   }
 
@@ -319,7 +321,7 @@ class CustomerDetails extends Component {
               </div>
               <div>
                 <div className="country">
-                  <FormControl className="formControl">
+                  <FormControl className="formControl" disabled={this.state.disableForm}>
                     <InputLabel htmlFor="grouped-select">Country</InputLabel>
                     <Select value={this.state.country}
                             onChange={(e) => this
