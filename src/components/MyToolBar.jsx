@@ -10,8 +10,8 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { withRouter } from "react-router-dom";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import axios from "axios";
-//import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from "@material-ui/core/styles";
+import FetchBooksData from "./FetchBooksData";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -30,7 +30,7 @@ class MyToolBar extends React.Component {
   }
 
   goToCart = event => {
-    this.props.history.push("summery");
+    this.props.history.push("summary");
   };
 
   handleSearch = event => {
@@ -48,45 +48,29 @@ class MyToolBar extends React.Component {
   }
 
   searchBookByTitle(searchData) {
-    // return Axios({
-    //     method: 'GET',
-    //     url: this.url+'searchByAuthorOrTitle?searchElement='+searchData
-    // })
     axios
       .get(this.url + "searchByAuthorOrTitle?searchElement=" + searchData)
       .then(result => {
         console.log("===>", result.data);
-
-        // this.props.history.push("/",{searchBooks:result.data})
         this.props.books(result.data);
         return result;
       })
       .catch(e => {
         alert("Book Not Found");
+        this.props.books(FetchBooksData.state.person);
       });
   }
 
   handleSearchBook = e => {
     let searchDataValue = this.state.searchValue;
-    //if (e.key == "Enter")
+    if (e.key == "Enter")
     this.searchBookByTitle(searchDataValue)
       .then(data => {
-        // let allBooks=data.data.result;
-        // for(let i=0;i<allBooks.length;i++){
-        //     if(allBooks[i].title.length>25)
-        //     {
-        //         allBooks[i].title=allBooks[i].title.slice(0, 25);
-        //         allBooks[i].title=allBooks[i].title+"...";
-        //     }
-        // }
         console.log(data);
-        // this.setState({ getBooks: allBooks });
       })
       .catch(err => {
         console.log("no book found");
         console.log(err);
-
-        // alert('Catch is ignored, because there are no errors');
       });
   };
 
@@ -111,13 +95,6 @@ class MyToolBar extends React.Component {
                   placeholder="Search…"
                   onChange={this.handleSearch}
                   onKeyDown={this.handleSearchBook}
-                  // startAdornment={(
-                  //     <InputAdornment position="start">
-                  //         <IconButton>
-                  //             <SearchIcon />
-                  //         </IconButton>
-                  //     </InputAdornment>
-                  // )}
                   inputProps={{ "aria-label": "search" }}
                 />
                 />

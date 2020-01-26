@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import ShoppingCart from "./ShoppingCart";
 import './PlaceOrder.css'
-import Button from "@material-ui/core/Button";
-import {Route, withRouter} from 'react-router-dom';
-import CustomerDetails from "./CustomerDetails";
-
 
 class OrderSummary extends Component {
 
