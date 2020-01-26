@@ -13,14 +13,14 @@ class FetchBooksData extends React.Component {
         clicks: 0,
         loading: true,
         person: [],
-        listShoppingCart: []
+        listShoppingCart: [],disabledCheckoutButton: false,
     };
 
     goToCart = event => {
         document.activeElement.style.backgroundColor = "#0588f9";
         document.activeElement.innerHTML = "ADDED TO BAG";
         let value = 0;
-
+        this.setState({disabledCheckoutButton: true});
         if (localStorage.getItem("abc") == null) {
             this.state.listShoppingCart.push(event);
             localStorage.setItem("abc", JSON.stringify(this.state.listShoppingCart));

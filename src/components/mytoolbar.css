@@ -41,15 +41,17 @@
 }
 
 .bookstore {
+    position: relative;
+    margin-left: 1em;
     width: fit-content;
-    font-size: 1.4vw;
+    font-size: 1em;
 }
 
 .searchInput{
-    margin-left: 6%;
+    margin-left: 2em;
 }
 
 .bookIcon{
-    margin-left: 2em;
+    margin-left: 1em;
 }
 

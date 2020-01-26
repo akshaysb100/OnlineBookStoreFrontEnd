@@ -61,7 +61,7 @@ class CustomerDetails extends Component {
             city: "",
             country: "",
             emailId: "",
-            emailError:"",
+            emailError: "",
             cityError: "",
             disableForm: false,
             disabledOrderSummary: false,
@@ -85,8 +85,7 @@ class CustomerDetails extends Component {
 
         axios({
             method: 'post',
-            // url: 'http://3.135.204.220:8080/books/orderConfirmation',
-            url: 'http://localhost:8080/books/orderConfirmation',
+            url: 'http://3.135.204.220:8080/books/orderConfirmation',
             headers: {},
             data: {
                 "customer": customer[0],
@@ -127,7 +126,7 @@ class CustomerDetails extends Component {
             }, 3000);
             return false;
         } else if (!this.state.emailId.match("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")) {
-            this.setState({emailError : "Invalid City Name"});
+            this.setState({emailError: "Invalid City Name"});
             setTimeout(() => {
                 this.setState({emailError: " "});
             }, 3000);
@@ -145,7 +144,7 @@ class CustomerDetails extends Component {
                 address: this.state.address,
                 country: this.state.country,
                 city: this.state.city,
-                emailId:this.state.emailId
+                emailId: this.state.emailId
             };
             this.setState({disabledCheckoutButton: true});
             this.state.customerDetails.push(this.state.listOfData);
@@ -438,4 +437,5 @@ class CustomerDetails extends Component {
         );
     }
 }
+
 export default withRouter(CustomerDetails);

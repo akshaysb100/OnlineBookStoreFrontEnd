@@ -1,6 +1,6 @@
 div.scroll {
   padding-top: 0em;
-  margin: 1em 10em;
+  margin: 6em 11em;
   width: 41em;
   height: 20em;
   overflow-x: hidden;
@@ -17,7 +17,7 @@ div.orderSummaryScroll {
 }
 
 .placedOrderButton {
-  margin-left: 41em;
+  margin-left: 42em;
   height: 2em;
   backgroundcolor: "#0588f9";
 }
