@@ -43,7 +43,7 @@ class OrderConfirmation extends Component {
             <div>
                 <div style={{marginLeft: '27em', marginTop: '13em'}}>
                     <img className={'confirmOrderImage'}
-                         src={require('/home/admin165/Desktop/onlinebookstore/OnlineBookStoreFrontEnd/src/components/Order-placed-successfully.png')}
+                         src={require('../assets/Order-placed-successfully.png')}
                          alt="Logo"/>
                 </div>
                 <div className='paragraph'>
